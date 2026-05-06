@@ -1,121 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sophia의 홈페이지</title>
     <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1f1c2c, #928dab);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --text-color: #fff;
+            --sub-text: #e0e0e0;
+            --accent-color: #ffd700;
+            --btn-bg: linear-gradient(to right, #f39c12, #f1c40f);
+            --btn-text: #000;
+        }
+
+        [data-theme="light"] {
+            --bg-gradient: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --text-color: #333;
+            --sub-text: #555;
+            --accent-color: #d81b60;
+            --btn-bg: linear-gradient(to right, #e91e63, #c2185b);
+            --btn-text: #fff;
+        }
+
         body {
-            background: linear-gradient(135deg, #1f1c2c, #928dab);
-            color: #fff;
+            background: var(--bg-gradient);
+            color: var(--text-color);
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 30px 15px;
+            padding: 20px 15px;
             margin: 0;
             min-height: 100vh;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
+
+        header {
+            margin-bottom: 30px;
+        }
+
         h1 {
-            color: #ffd700;
+            color: var(--accent-color);
             font-size: 24px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
         }
-        h2 {
-            color: #f39c12;
-            font-size: 18px;
-            margin-top: 0;
-        }
+
         p {
             font-size: 14px;
-            color: #e0e0e0;
+            color: var(--sub-text);
             line-height: 1.5;
         }
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin: 20px auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+        .theme-toggle-btn {
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            margin-top: 10px;
         }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
         .btn {
             display: block;
-            background: linear-gradient(to right, #f39c12, #f1c40f);
-            color: #000;
+            background: var(--btn-bg);
+            color: var(--btn-text);
             padding: 12px 20px;
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
             margin-top: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
+
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
-    <h1>안녕하세요! Sophia의 홈페이지에 오신 것을 환영합니다.</h1>
-    <p>제가 좋아하는 것들과 활동을 소개하는 고급스러운 공간이에요.</p>
+    <header>
+        <h1>안녕하세요! Sophia의 홈페이지입니다.</h1>
+        <p>다양한 활동과 관심사를 소개하는 멋진 공간이에요.</p>
+        <button class="theme-toggle-btn" onclick="toggleTheme()">☀️ 테마 변경</button>
+    </header>
     
-    <div class="section">
-        <h2>🎵 좋아하는 음악</h2>
-        <p>보이넥스트도어(BOYNEXTDOOR)를 정말 좋아해요! 노래도 좋고 무대도 멋지답니다.</p>
-        <a class="btn" href="https://www.youtube.com/results?search_query=BOYNEXTDOOR" target="_blank">유튜브에서 보넥도 검색하기</a>
+    <div class="container">
+        <div class="section">
+            <h2>🎵 좋아하는 음악</h2>
+            <p>보이넥스트도어(BOYNEXTDOOR)를 정말 좋아해요! 노래도 좋고 무대도 멋지답니다.</p>
+            <a class="btn" href="https://www.youtube.com/results?search_query=BOYNEXTDOOR" target="_blank">유튜브에서 보넥도 검색하기</a>
+        </div>
+
+        <div class="section">
+            <h2>👑 학생회장 활동</h2>
+            <p>반에서 학생회장으로서 친구들과 함께 즐거운 학급 회의를 이끌고 있어요.</p>
+            <a class="btn" href="http://myungduk.sen.es.kr/" target="_blank">명덕초등학교 바로가기</a>
+        </div>
+
+        <div class="section">
+            <h2>💃 취미 및 관심사</h2>
+            <p>방과후 수업으로 방송댄스를 즐기고 있으며, 앞으로 방송반에도 들어가고 싶어요.</p>
+            <a class="btn" href="https://search.naver.com/search.naver?query=초등학생+인기+검색어" target="_blank">네이버에서 관심사 검색하기</a>
+        </div>
+
+        <div class="section">
+            <h2>🇯🇵 일본어 공부</h2>
+            <p>새로운 언어를 배우는 것은 정말 즐거운 일이죠. 단어나 문장 번역이 필요할 때 사용해 보렴.</p>
+            <a class="btn" href="https://papago.naver.com/" target="_blank">파파고로 일본어 공부하기</a>
+        </div>
+
+        <div class="section">
+            <h2>📚 초등 5-6학년 시험공부</h2>
+            <p>5, 6학년 주요 과목의 개념을 정리하고 단원평가를 대비할 수 있는 공간이에요.</p>
+            <a class="btn" href="https://primary.ebs.co.kr/" target="_blank">EBS 초등 사이트 가기</a>
+        </div>
+
+        <div class="section">
+            <h2>⌨️ 타자 연습</h2>
+            <p>컴퓨터 실력을 키우고 싶을 때 이용해 보렴. 재미있게 타자 실력을 기를 수 있단다.</p>
+            <a class="btn" href="https://www.hancomtyping.com/" target="_blank">한컴타자연습 사이트 가기</a>
+        </div>
+
+        <div class="section">
+            <h2>🎶 어버이날 노래</h2>
+            <p>부모님께 들려드릴 따뜻하고 감동적인 노래를 찾을 수 있는 공간이란다.</p>
+            <a class="btn" href="https://www.youtube.com/results?search_query=어버이날+노래" target="_blank">유튜브에서 어버이날 노래 검색하기</a>
+        </div>
+
+        <div class="section">
+            <h2>📱 유미의 세포들</h2>
+            <p>인기 웹툰 '유미의 세포들'의 매력적인 주인공 순록이를 만나볼 수 있는 공간이에요.</p>
+            <a class="btn" href="https://search.naver.com/search.naver?query=유미의+세포들+순록" target="_blank">네이버에서 순록이 검색하기</a>
+        </div>
+
+        <div class="section">
+            <h2>🗣️ 순록이 목소리</h2>
+            <p>인기 웹툰 및 드라마 '유미의 세포들' 속 순록이의 목소리를 들어볼 수 있는 공간이란다.</p>
+            <a class="btn" href="https://www.youtube.com/results?search_query=유미의+세포들+순록이+목소리" target="_blank">유튜브에서 순록이 목소리 듣기</a>
+        </div>
     </div>
 
-    <div class="section">
-        <h2>👑 학생회장 활동</h2>
-        <p>반에서 학생회장으로서 친구들과 함께 즐거운 학급 회의를 이끌고 있어요.</p>
-        <a class="btn" href="http://myungduk.sen.es.kr/" target="_blank">명덕초등학교 바로가기</a>
-    </div>
-
-    <div class="section">
-        <h2>💃 취미 및 관심사</h2>
-        <p>방과후 수업으로 방송댄스를 즐기고 있으며, 앞으로 방송반에도 들어가고 싶어요.</p>
-        <a class="btn" href="https://search.naver.com/search.naver?query=초등학생+인기+검색어" target="_blank">네이버에서 관심사 검색하기</a>
-    </div>
-
-    <div class="section">
-        <h2>🇯🇵 일본어 공부</h2>
-        <p>새로운 언어를 배우는 것은 정말 즐거운 일이죠. 단어나 문장 번역이 필요할 때 사용해 보렴.</p>
-        <a class="btn" href="https://papago.naver.com/" target="_blank">파파고로 일본어 공부하기</a>
-    </div>
-
-    <div class="section">
-        <h2>📚 초등 5-6학년 시험공부</h2>
-        <p>5, 6학년 주요 과목의 개념을 정리하고 단원평가를 대비할 수 있는 공간이에요.</p>
-        <a class="btn" href="https://primary.ebs.co.kr/" target="_blank">EBS 초등 사이트 가기</a>
-    </div>
-
-    <div class="section">
-        <h2>⌨️ 타자 연습</h2>
-        <p>컴퓨터 실력을 키우고 싶을 때 이용해 보렴. 재미있게 타자 실력을 기를 수 있단다.</p>
-        <a class="btn" href="https://www.hancomtyping.com/" target="_blank">한컴타자연습 사이트 가기</a>
-    </div>
-
-    <div class="section">
-        <h2>🎶 어버이날 노래</h2>
-        <p>부모님께 들려드릴 따뜻하고 감동적인 노래를 찾을 수 있는 공간이란다.</p>
-        <a class="btn" href="https://www.youtube.com/results?search_query=어버이날+노래" target="_blank">유튜브에서 어버이날 노래 검색하기</a>
-    </div>
-
-    <div class="section">
-        <h2>📱 유미의 세포들</h2>
-        <p>인기 웹툰 '유미의 세포들'의 매력적인 주인공 순록이를 만나볼 수 있는 공간이에요.</p>
-        <a class="btn" href="https://search.naver.com/search.naver?query=유미의+세포들+순록" target="_blank">네이버에서 순록이 검색하기</a>
-    </div>
-
-    <div class="section">
-        <h2>🗣️ 순록이 목소리</h2>
-        <p>인기 웹툰 및 드라마 '유미의 세포들' 속 순록이의 목소리를 들어볼 수 있는 공간이란다.</p>
-        <a class="btn" href="https://www.youtube.com/results?search_query=유미의+세포들+순록이+목소리" target="_blank">유튜브에서 순록이 목소리 듣기</a>
-    </div>
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+    </script>
 </body>
 </html>
+
+---
+
+## 적용 방법
+
+* 위의 코드를 전체 복사해서 `index.html` 파일에 덮어씌워 보렴.
+* 깃허브 저장소에 코드를 올린 후, 스마트폰에서 '테마 변경' 버튼을 누르면 밝은 테마와 어두운 테마를 마음대로 고를 수 있단다.
