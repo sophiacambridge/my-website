@@ -4,43 +4,58 @@
     <title>Sophia의 홈페이지</title>
     <style>
         body {
-            background-color: #fce4ec;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #fff;
             text-align: center;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 50px;
+            margin: 0;
+            min-height: 100vh;
         }
         h1 {
-            color: #d81b60;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
         }
         h2 {
-            color: #880e4f;
+            color: #f39c12;
+            margin-top: 0;
         }
         p {
             font-size: 18px;
-            color: #4a148c;
+            color: #e0e0e0;
         }
         .section {
-            background-color: white;
-            margin: 20px auto;
-            padding: 20px;
-            width: 80%;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 25px auto;
+            padding: 30px;
+            width: 75%;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
         .btn {
             display: inline-block;
-            background-color: #f8bbd0;
-            color: #880e4f;
-            padding: 10px 20px;
+            background: linear-gradient(to right, #f39c12, #f1c40f);
+            color: #000;
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
         }
     </style>
 </head>
 <body>
     <h1>안녕하세요! Sophia의 홈페이지에 오신 것을 환영합니다.</h1>
-    <p>제가 좋아하는 것들과 활동을 소개하는 공간이에요.</p>
+    <p>제가 좋아하는 것들과 활동을 소개하는 고급스러운 공간이에요.</p>
     
     <div class="section">
         <h2>🎵 좋아하는 음악</h2>
@@ -51,7 +66,7 @@
     <div class="section">
         <h2>👑 학생회장 활동</h2>
         <p>반에서 학생회장으로서 친구들과 함께 즐거운 학급 회의를 이끌고 있어요.</p>
-        <a class="btn" href="http://www.myongdok.es.kr/" target="_blank">명덕초등학교 바로가기</a>
+        <a class="btn" href="http://myongdok.sen.es.kr/" target="_blank">명덕초등학교 바로가기</a>
     </div>
 
     <div class="section">
